@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Money keeper</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="img/favicon.svg">
+</head>
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<nav class="header__nav">
+				<div class="header__nav-title">Money keeper</div>
+			</nav>
+		</header>
+		<main class="main-content">
+			<h1 class="main-content__title">Расчёт дневного бюджета</h1>
+			<section class="expenses">
+				<h2 class="expenses-title  title-h2">Введите обязательные расходы</h2>
+				<div class="inputs-wrapper">
+					<input type="text" class="expenses__input input" placeholder="Наименование">
+					<input type="text" class="expenses__input input" placeholder="Цена">
+					<input type="text" class="expenses__input input" placeholder="Наименование">
+					<input type="text" class="expenses__input input" placeholder="Цена">
+				</div>
+					
+					<button class="expenses__button">Утвердить</button>
+					<div class="input-add">
+						<img src="img/Plus.svg" alt="">
+					</div>
+			</section>
+
+			<section class="money-info">
+				<div>Доход</div>
+				<div>30 000</div>
+				<div>Бюджет на 1 день:</div>
+				<div>30 000</div>
+				<div>Уровень дохода:</div>
+				<div>30 000</div>
+				<div>Обязательные расходы:</div>
+				<div>30 000</div>
+				<div>Возможные траты:</div>
+				<div>30 000</div>
+				<div>Дополнительный доход:</div>
+				<div>30 000</div>
+				<div>Накопления за 1 месяц:</div>
+				<div>30 000</div>
+				<div>Накопления за 1 год:</div>
+				<div>30 000</div>
+			</section>
+
+			<section class="optional-expenses">
+				<h2 class="optional-expenses-title  title-h2">Введите необязательные расходы</h2>
+				<div class="inputs-wrapper">
+					<input type="text" class="optional-expenses__input input">
+					<input type="text" class="optional-expenses__input input">
+					<input type="text" class="optional-expenses__input input">
+				</div>
+					
+					<button class="optional-expenses__button">Утвердить</button>
+					<div class="input-add">
+						<img src="img/Plus.svg" alt="">
+					</div>
+			</section>
+
+			<h2 class="income-title  title-h2">Введите статьи возможного дохода через запятую</h2>
+			<input type="text" class="choose-income  input" placeholder="Введите здесь">
+
+			<div class="data">
+				<input class="data__year data-item  input" disabled>
+				<input class="data__month data-item input" disabled>
+				<input class="data__value data-item input" disabled>
+			</div>
+
+			<section class="savings">
+				<h2 class="savings__title title-h2">Есть ли накопления?</h2>
+				<input type="checkbox" class="check-savings">
+				<table>
+					<tr>
+						<td class="sum-label">Сумма</td>
+						<td><input type="text" class="sum input"></td>
+					</tr>
+					<tr>
+						<td class="percent-label">Процент</td>
+						<td><input type="text" class="percent input"></td>
+					</tr>
+				</table>
+			</section>
+			<button class="start-payment__button">Начать расчёт</button>
+		</main>
+	</div>
+</body>
+</html>

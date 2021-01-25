@@ -1,0 +1,210 @@
+@import "nullstyle";
+@import "variables";
+
+$maxWidth: 1440;
+@mixin adaptive-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320;
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+
+%buttonEffects {
+    background-color: $buttonBackgroundColor;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    &:hover {
+      background-color: $buttonHover;
+      transition: .3s;  
+    }
+}
+
+body {
+    background-color: $bodyBackgroundColor;
+    font-family: $mainFont;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.main-content {
+    grid-column: 1/-1;
+}
+
+.header {
+    color: white;
+    background-color: $headerBackgroundColor;
+    height: 90px;
+    padding: 0 40px;
+    grid-column: 1/-1;
+    & .header__nav-title {
+        font-family: 'Shanti', sans-serif;
+        line-height: 31px;
+        font-size: 24px;
+        margin: 30px 0;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        text-transform: uppercase;
+    }
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.main-content__title {
+    font-weight: 700;
+    text-align: center;
+    margin: 74px 0;
+    line-height: 43.88px;
+    grid-column: 1/-1;
+    @include adaptive-font(36, 20);
+}
+
+.money-info {
+    background-color: white;
+    border-radius: 31px;
+    grid-column: 3/5;
+    height: 100vh;
+    max-width: 645px;
+}
+
+.expenses,
+.optional-expenses {
+    grid-column: 1/3;
+}
+
+.optional-expenses {
+    position: relative;
+    margin-top: -30vh;
+}
+
+.title-h2{
+    font-weight: 600;
+    line-height: 23px;
+    @include adaptive-font(19, 14);
+}
+
+.income-title {
+    margin-top: 152px;
+    grid-row: 4;
+    grid-column: 1/3;
+}
+
+.optional-expenses-title {
+    margin: 77px 0 0 0;
+}
+
+.inputs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 66%;
+}
+
+.input {
+    width: 312px;
+    height: 49px;
+    margin: 37px 21px 0 0;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    &:hover {
+        background-color: $inputHover;
+    }
+    @include adaptive-font(19, 12);
+}
+
+.data-item {
+    width: 157px;
+    background-color: white;
+}
+
+.choose-income {
+    grid-row: 5;
+    grid-column: 1/3;
+    width: 50vw;
+    margin-top: 10px;
+}
+
+.expenses__button,
+.optional-expenses__button {
+    width: 206px;
+    height: 50px;
+    margin: 45px 0 0 0;
+    @extend %buttonEffects;
+}
+
+.input-add {
+    width: 31px;
+    height: 31px;
+    background-color: white;
+    border-radius: 100%;
+    margin: 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+    &:hover {
+        background-color: $plusHover;
+    }
+}
+
+.money-info {
+    display: flex;
+    padding: 42px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & div {
+        width: 50%;
+        font-size: 24px;
+        line-height: 29.26px;
+        @include adaptive-font(24, 14);
+    }
+    & div:nth-child(even) {
+        text-align: end;
+        color: green;
+
+    }
+}
+
+.data {
+    display: flex;
+}
+
+.savings {
+    margin: 154px 0 0 0;
+    grid-row: 6;
+    .savings__title {
+    display: inline;
+    margin-right: 134px;
+    }
+    .check-savings {
+    height: 32px;
+    width: 32px;
+    }
+    .sum-label,
+    .percent-label {
+        @include adaptive-font(19, 10);
+        font-weight: 700;
+        margin-right: 267px;
+    }
+    .sum,
+    .percent {
+        margin-left: 100px;
+    }
+}
+
+.start-payment__button {
+    grid-row: 7;
+    width: 312px;
+    height: 84px;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    @extend %buttonEffects;
+}
