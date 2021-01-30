@@ -7,78 +7,102 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-	<link rel="shortcut icon" href="img/favicon.svg">
+	<link rel="shortcut icon" href="img/money.svg">
 </head>
 <body>
 	<div class="wrapper">
 		<header class="header">
 			<nav class="header__nav">
-				<div class="header__nav-title">Money keeper</div>
+				<div class="header__nav-title">Money keeper <img src="img/dollar.svg" alt="dollar header" width="36" height="36"></div>
 			</nav>
 		</header>
+
 		<main class="main-content">
 			<h1 class="main-content__title">Расчёт дневного бюджета</h1>
 			<section class="expenses">
-				<h2 class="expenses-title  title-h2">Введите обязательные расходы</h2>
-				<div class="inputs-wrapper">
-					<input type="text" class="expenses__input input" placeholder="Наименование">
-					<input type="text" class="expenses__input input" placeholder="Цена">
-					<input type="text" class="expenses__input input" placeholder="Наименование">
-					<input type="text" class="expenses__input input" placeholder="Цена">
+				<h2 class="expenses__title title-h2">Введите обязательные расходы</h2>
+				<div class="expenses__enter-items">
+					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
+					<input type="number" class="expenses__enter-item enter-item" placeholder="Цена">
+					<br>
+					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
+					<input type="number" class="expenses__enter-item enter-item" placeholder="Цена">
 				</div>
-					
-					<button class="expenses__button">Утвердить</button>
-					<div class="input-add">
-						<img src="img/Plus.svg" alt="">
-					</div>
-			</section>
 
-			<section class="money-info">
-				<div class="budget">Доход</div>
-				<div class="budget-value"></div>
-				<div class="daybudget">Бюджет на 1 день:</div>
-				<div class="daybudget-value"></div>
-				<div class="level">Уровень дохода:</div>
-				<div class="level-value"></div>
-				<div class="expenses">Обязательные расходы:</div>
-				<div class="expenses-value"></div>
-				<div class="optionalexpenses">Возможные траты:</div>
-				<div class="optionalexpenses-value"></div>
-				<div class="income">Дополнительный доход:</div>
-				<div class="income-value"></div>
-				<div class="monthsavings">Накопления за 1 месяц:</div>
-				<div class="monthsavings-value"></div>
-				<div class="yearsavings">Накопления за 1 год:</div>
-				<div class="yearsavings-value"></div>
+				<div class="action-wrapper">
+					<button class="expenses__button">Утвердить</button>
+					<div class="input-add" title="Добавить">
+						<img src="img/Plus.svg" alt="plus" title="Добавить">
+					</div>
+				</div>
 			</section>
+			<div class="money-info-wrapper">
+				<table class="money-info">
+					<tr>
+						<td class="budget">Доход:</td>
+						<td class="budget-value">190000</td>
+					</tr>
+					<tr>
+						<td class="daybudget">Бюджет на 1 день:</td>
+						<td class="daybudget-value">1900</td>
+					</tr>
+					<tr>
+						<td class="level">Уровень дохода:</td>
+						<td class="level-value">190000</td>
+					</tr>
+					<tr>
+						<td class="expenses">Обязательные расходы:</td>
+						<td class="expenses-value">190000</td>
+					</tr>
+					<tr>
+						<td class="optionalexpenses">Возможные траты:</td>
+						<td class="optionalexpenses-value">1фы</td>
+					</tr>
+					<tr>
+						<td class="income">Дополнительный доход:</td>
+						<td class="income-value">190000</td>
+					</tr>
+					<tr>
+						<td class="monthsavings">Накопления за 1 месяц:</td>
+						<td class="monthsavings-value">190000</td>
+					</tr>
+					<tr>
+						<td class="yearsavings">Накопления за 1 год:</td>
+						<td class="yearsavings-value">190000</td>
+					</tr>
+				</table>
+				<div class="data">
+					<input class="data__year data-item  input" value="год" disabled>
+					<input class="data__month data-item input" value="месяц" disabled>
+					<input class="data__day data-item input" value="день" disabled>
+				</div>
+			</div>
 
 			<section class="optional-expenses">
 				<h2 class="optional-expenses-title  title-h2">Введите необязательные расходы</h2>
-				<div class="inputs-wrapper">
-					<input type="text" class="optional-expenses__input input">
-					<input type="text" class="optional-expenses__input input">
-					<input type="text" class="optional-expenses__input input">
+				<div class="expenses__enter-items">
+					<input type="text" class="optional-expenses__enter-item enter-item">
+					<input type="text" class="optional-expenses__enter-item enter-item">
+					<input type="text" class="optional-expenses__enter-item enter-item">
 				</div>
 					
-					<button class="optional-expenses__button">Утвердить</button>
-					<div class="input-add">
-						<img src="img/Plus.svg" alt="">
+				<div class="action-wrapper">
+					<button class="expenses__button">Утвердить</button>
+					<div class="input-add"  title="Добавить">
+						<img src="img/Plus.svg" alt="plus" title="Добавить">
 					</div>
+				</div>
 			</section>
 
-			<h2 class="income-title  title-h2">Введите статьи возможного дохода через запятую</h2>
-			<input type="text" class="choose-income  input" placeholder="Введите здесь">
-
-			<div class="data">
-				<input class="data__year data-item  input" disabled>
-				<input class="data__month data-item input" disabled>
-				<input class="data__day data-item input" disabled>
-			</div>
+			<section class="income">
+				<h2 class="income-title  title-h2">Введите статьи возможного дохода через запятую</h2>
+				<input type="text" class="income__enter  enter-item" placeholder="Премия, доходы от акций, повышение зарплаты">
+			</section>
 
 			<section class="savings">
 				<h2 class="savings__title title-h2">Есть ли накопления?</h2>
 				<input type="checkbox" class="check-savings">
-				<table>
+				<table class="savings__data">
 					<tr>
 						<td class="sum-label">Сумма</td>
 						<td><input type="text" class="sum input"></td>
@@ -89,9 +113,9 @@
 					</tr>
 				</table>
 			</section>
-			<button class="start-payment__button">Начать расчёт</button>
+			<button class="start-payment-button">Начать расчёт</button>
 		</main>
 	</div>
-	<script src="js/main.js"></script>
+	<!-- <script src="js/main.js"></script> -->
 </body>
 </html>
