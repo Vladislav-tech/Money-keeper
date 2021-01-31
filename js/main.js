@@ -1,19 +1,19 @@
-const startPayment = document.querySelector(".start-payment__button");
+const startPayment = document.querySelector(".start-payment-button");
 const budgetValue = document.querySelector(".budget-value");
 const dayBudgetValue = document.querySelector(".daybudget-value");
 const levelValue = document.querySelector(".level-value");
 const expensesValue = document.querySelector(".expenses-value");
-const optionalExpensesItems = document.querySelectorAll(".optional-expenses__input");
+const optionalExpensesItems = document.querySelectorAll(".optional-expenses__enter-item");
 const incomeValue = document.querySelector(".income-value");
 const monthSavingsValue = document.querySelector(".monthsavings-value");
 const yearSavingsValue = document.querySelector(".yearsavings-value");
 
-const expensesItems = document.querySelectorAll(".expenses__input");
+const expensesItems = document.querySelectorAll(".expenses__enter-item");
 const expensesItemBtn = document.querySelector(".expenses__button");
 const optionalExpensesBtn = document.querySelector(".optional-expenses__button");
 const optionalExpensesValue = document.querySelector(".optionalexpenses-value");
 
-const chooseIncome = document.querySelector(".choose-income");
+const chooseIncome = document.querySelector(".income__enter");
 const checkSavings = document.querySelector(".check-savings");
 const sum = document.querySelector(".sum");
 const percent = document.querySelector(".percent");

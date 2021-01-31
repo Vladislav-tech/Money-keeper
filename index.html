@@ -7,10 +7,11 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-	<link rel="shortcut icon" href="img/money.svg">
+	<link rel="shortcut icon" href="img/favicon.svg">
 </head>
 <body>
 	<div class="wrapper">
+		<a name="top" class="scroll"></a>
 		<header class="header">
 			<nav class="header__nav">
 				<div class="header__nav-title">Money keeper <img src="img/dollar.svg" alt="dollar header" width="36" height="36"></div>
@@ -19,7 +20,23 @@
 
 		<main class="main-content">
 			<h1 class="main-content__title">Расчёт дневного бюджета</h1>
+			<section class="description">
+				<p class="description__text">Это простое приложение, созданное начинающим разработчиком, для расчёта вашего ежедневного бюджета. <br>
+					Нажмите <a href="#start-payment">начать расчёт</a> для начала работы. Введите ваш бюджет, текущую дату и вы увидете ваш бюджет на
+					месяц, бюджет на сутки(без учёта расходов) и уровень дохода. Для указания расходов введите данные в <a href="#expenses">поля ниже</a> <br>
+					Если нужно добавить новое поле, то нажмите на <a href="#plus">плюсик</a>
+				</p>
+				<p class="description__text">Аналогично работают <a href="#optional-expenses">необязательные расходы.</a> Вы также можете ввести
+					данные о ваших <a href="#savings">накоплениях</a> и указать <a href="#income">дополнительный доход.</a>
+					Наслаждайтесь программой и спасибо за ваше внимание!
+				</p>
+				<p class="github">
+					<a href="https://github.com/Vladislav-tech/Money-keeper" class="github__link">Github-репозиторий</a>
+					<img src="img/github.svg" alt="github" width="20" height="20" class="github__img">
+				</p>
+			</section>
 			<section class="expenses">
+				<a name="expenses"></a>
 				<h2 class="expenses__title title-h2">Введите обязательные расходы</h2>
 				<div class="expenses__enter-items">
 					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
@@ -28,7 +45,7 @@
 					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
 					<input type="number" class="expenses__enter-item enter-item" placeholder="Цена">
 				</div>
-
+				<a name="plus"></a>
 				<div class="action-wrapper">
 					<button class="expenses__button">Утвердить</button>
 					<div class="input-add" title="Добавить">
@@ -40,35 +57,35 @@
 				<table class="money-info">
 					<tr>
 						<td class="budget">Доход:</td>
-						<td class="budget-value">190000</td>
+						<td class="budget-value"></td>
 					</tr>
 					<tr>
 						<td class="daybudget">Бюджет на 1 день:</td>
-						<td class="daybudget-value">1900</td>
+						<td class="daybudget-value"></td>
 					</tr>
 					<tr>
 						<td class="level">Уровень дохода:</td>
-						<td class="level-value">190000</td>
+						<td class="level-value"></td>
 					</tr>
 					<tr>
 						<td class="expenses">Обязательные расходы:</td>
-						<td class="expenses-value">190000</td>
+						<td class="expenses-value"></td>
 					</tr>
 					<tr>
 						<td class="optionalexpenses">Возможные траты:</td>
-						<td class="optionalexpenses-value">1фы</td>
+						<td class="optionalexpenses-value"></td>
 					</tr>
 					<tr>
 						<td class="income">Дополнительный доход:</td>
-						<td class="income-value">190000</td>
+						<td class="income-value"></td>
 					</tr>
 					<tr>
 						<td class="monthsavings">Накопления за 1 месяц:</td>
-						<td class="monthsavings-value">190000</td>
+						<td class="monthsavings-value"></td>
 					</tr>
 					<tr>
 						<td class="yearsavings">Накопления за 1 год:</td>
-						<td class="yearsavings-value">190000</td>
+						<td class="yearsavings-value"></td>
 					</tr>
 				</table>
 				<div class="data">
@@ -79,6 +96,7 @@
 			</div>
 
 			<section class="optional-expenses">
+				<a name="optional-expenses"></a>
 				<h2 class="optional-expenses-title  title-h2">Введите необязательные расходы</h2>
 				<div class="expenses__enter-items">
 					<input type="text" class="optional-expenses__enter-item enter-item">
@@ -87,7 +105,7 @@
 				</div>
 					
 				<div class="action-wrapper">
-					<button class="expenses__button">Утвердить</button>
+					<button class="optional-expenses__button">Утвердить</button>
 					<div class="input-add"  title="Добавить">
 						<img src="img/Plus.svg" alt="plus" title="Добавить">
 					</div>
@@ -95,11 +113,13 @@
 			</section>
 
 			<section class="income">
+				<a name="income"></a>
 				<h2 class="income-title  title-h2">Введите статьи возможного дохода через запятую</h2>
 				<input type="text" class="income__enter  enter-item" placeholder="Премия, доходы от акций, повышение зарплаты">
 			</section>
 
 			<section class="savings">
+				<a name="savings"></a>
 				<h2 class="savings__title title-h2">Есть ли накопления?</h2>
 				<input type="checkbox" class="check-savings">
 				<table class="savings__data">
@@ -113,9 +133,20 @@
 					</tr>
 				</table>
 			</section>
-			<button class="start-payment-button">Начать расчёт</button>
+			<button class="start-payment-button"><a name="start-payment"></a>Начать расчёт</button>
 		</main>
+		<footer class="footer">
+			<nav class="footer__nav">
+				<div class="footer__nav-title"><a href="#top" class="footer__link scroll">Money keeper <img src="img/dollar.svg" alt="dollar footer" width="36" height="36"></a></div>
+			</nav>
+			<div class="footer__copy">
+				<h3 class="copyright-title title-h3">&copy; Copyright, 2021</h3>
+			</div>
+			<div class="author">
+				Developer: <a href="https://github.com/Vladislav-tech" class="author__link" target="_blank">Vladislav_tech</a>
+			</div>
+		</footer>
 	</div>
-	<!-- <script src="js/main.js"></script> -->
+	<script src="js/main.js"></script>
 </body>
 </html>
