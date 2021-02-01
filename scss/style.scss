@@ -56,8 +56,33 @@ body {
     @include adaptive-font(18, 14);
 }
 
+.github__link {
+    font-size: 1em;
+    position: relative;
+    transition: all 0.6s;
+    &:before {
+        content: "";
+        width: 0;
+        height: 0.1em;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: green;
+        transition: all 0.8s;
+    }
+    &:hover {
+        &:before {
+            width: 100%;
+            left: 0;
+            background-color: chartreuse;
+            background: 0329d3;
+        }
+    }
+}
+
 .expenses {
     display: inline-block;
+    max-width: 60%;
 }
 
 .title-h2 {
@@ -91,7 +116,8 @@ body {
     flex-wrap: wrap-reverse;
 }
 
-.input-add {
+.input-add,
+.delete-expenses {
     margin-left: auto;
     background-color: #ffffff;
     border-radius: 100%;
@@ -109,6 +135,11 @@ body {
         background-color: black;
         transition: 1.3s;
     }
+}
+
+.input-delete,
+.delete-optional-expenses {
+    display: none;
 }
 
 .expenses__button,
@@ -244,6 +275,10 @@ body {
 // #00aeff
 
 @media screen and(max-width: 957px) {
+    .expenses {
+        max-width: 60vw;
+    }
+
     .money-info-wrapper {
         display: inline-block;
         position: relative;
@@ -286,4 +321,16 @@ body {
     }
     
     
+}
+
+@media screen and(min-width: 660px) and (max-width: 768px){
+    .expenses {
+        max-width: 90%;
+    }
+}
+
+@media screen and(min-width: 2000px) {
+    .expenses {
+        max-width: 55%;
+    }
 }
