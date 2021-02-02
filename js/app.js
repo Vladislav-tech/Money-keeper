@@ -54,6 +54,8 @@ chooseIncome.addEventListener("input", function() {
 });
 
 checkSavings.addEventListener("click", function() {
+    sum.disabled = false;
+    percent.disabled = false;
     if (appData.savings) {
         appData.savings = false;
     } else {
@@ -116,8 +118,6 @@ startPayment.addEventListener("click", function() {
     optionalExpensesBtn.disabled = false;
     chooseIncome.disabled = false;
     checkSavings.disabled = false;
-    sum.disabled = false;
-    percent.disabled = false;
     for (let key of optionalExpensesItems) {
         key.disabled = false;
     }
@@ -166,33 +166,40 @@ startPayment.addEventListener("click", function() {
         });
     });
 
-    // addOptionalItem.addEventListener("click", function(){
-    //     deleteOptionalItem.style.display = "flex";
-    //     deleteOptionalItem.classList.add("delete-expenses");
-        
-    //     let optionalExpenses = document.createElement("input");
 
-    //     optionalExpenses.classList.add("optional-expenses__enter-item");
-    //     optionalExpenses.classList.add("enter-item");
-    //     optionalExpensesEnterItems.appendChild(optionalExpenses);
-    //     console.log("click");
+    addOptionalItem.addEventListener("click", function(){
+        deleteOptionalItem.style.display = "flex";
+        deleteOptionalItem.classList.add("delete-expenses");
 
-    //     optionalExpensesItems = document.querySelectorAll(".optional-expenses__enter-item");
+        let optionalInput = document.createElement("input");
+        optionalInput.classList.add("optional-expenses__enter-item");
+        optionalInput.classList.add("enter-item");
 
-    //     deleteOptionalItem.addEventListener("click", function() {
-    //         optionalExpensesEnterItems.removeChild(optionalExpenses);
-    //         deleteOptionalItem.style.display = "none";
+        optionalExpensesEnterItems.appendChild(optionalInput);
+        optionalExpensesItems = document.querySelectorAll(".optional-expenses__enter-item");
+        console.log(optionalExpensesValue.textContent);
 
-    //         console.log(appData.optionalExpenses);
-    //         const lastOptionalExpenses = Object.keys(appData.optionalExpenses)[Object.keys(appData.optionalExpenses).length - 1]; // последний элемент appData.optionalExpenses
-    //         optionalExpensesItems = document.querySelectorAll(".optional-expenses__enter-item");
-    //         delete appData.optionalExpenses[lastOptionalExpenses];
+        optionalExpensesObj = Object.assign({}, appData.optionalExpenses);
+        optionalTextContent = (Object.values(optionalExpensesObj)).join(" ");
+        optionalExpensesValue.textContent = optionalTextContent;
 
-    //         optionalExpensesValue.textContent = (Array.from(optionalExpensesItems)).join("");
-    //     });
+        deleteOptionalItem.addEventListener("click", function() {
+            optionalExpensesEnterItems.removeChild(optionalInput);
+            deleteOptionalItem.style.display = "none";
 
-    // });
+            const lastOptExpensesElement = Object.keys(appData.optionalExpenses)[Object.keys(appData.optionalExpenses).length - 1];
+            console.log(lastOptExpensesElement);
+            optionalExpensesItems = document.querySelectorAll(".optional-expenses__enter-item");
 
+            delete appData.optionalExpenses[lastOptExpensesElement];
+
+            optionalExpensesObj = Object.assign({}, appData.optionalExpenses);
+            optionalTextContent = (Object.values(optionalExpensesObj)).join(" ");
+            optionalExpensesValue.textContent = optionalTextContent;
+
+        });
+    });
+    
     if (appData.budget != undefined) {
         appData.moneyPerDay = ((appData.budget - (+expensesValue.textContent)) / 30 ).toFixed(1);
         dayBudgetValue.textContent = appData.moneyPerDay;
@@ -253,11 +260,17 @@ function countMoney() {
     }
 }
 
+var optionalExpensesObj = Object.assign({}, appData.optionalExpenses);
+var optionalTextContent = (Object.values(optionalExpensesObj)).join(" ");
+
 optionalExpensesBtn.addEventListener("click", function() {
     for(let i = 0; i < optionalExpensesItems.length; i++) {
         let opt = optionalExpensesItems[i].value;
         appData.optionalExpenses[i] = opt;
         optionalExpensesValue.textContent += appData.optionalExpenses[i] + " ";
     }
+    optionalExpensesObj = Object.assign({}, appData.optionalExpenses);
+    optionalTextContent = (Object.values(optionalExpensesObj)).join(" ");
+    optionalExpensesValue.textContent = optionalTextContent;
     console.log("click");
 });
