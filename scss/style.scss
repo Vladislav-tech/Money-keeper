@@ -143,10 +143,15 @@ body {
 }
 
 .expenses__button,
-.optional-expenses__button {
+.optional-expenses__button,
+.modal-window__button {
     height: 7.5vh;
     width: 206px;
     @extend %buttonEffects;
+}
+
+.modal-window__button {
+    position: relative;
 }
 
 .money-info-wrapper {
@@ -272,6 +277,37 @@ body {
 
 }
 
+.modal-window {
+    display: none;
+    color: white;
+    @include adaptive-font(18, 12);
+    position: fixed;
+    margin-top: 10%;
+    border: 1px solid black;
+    height: 60vh;
+    width: 100vw;
+    background-color: $headerBackgroundColor;
+    padding: 5%;
+    z-index: 1;
+}
+
+.modal-window__inner-content {
+    height: 100%;
+}
+
+.modal-window__text {
+    width: 40%;
+    text-align: center;
+}
+
+.modal-window__enter-item {
+    margin: 10px 10px 10px 0;
+    width: 40%;
+    height: 10%;
+    text-align: center;
+    @include adaptive-font(16, 12);
+}
+
 // #00aeff
 
 @media screen and(max-width: 957px) {
@@ -302,6 +338,14 @@ body {
 
     .start-payment-button {
         width: 250px;
+    }
+
+    .modal-window__enter-item {
+        width: 50%
+    }
+
+    .modal-window__text {
+        width: 50%;
     }
 }
 

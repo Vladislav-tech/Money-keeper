@@ -10,6 +10,19 @@
 	<link rel="shortcut icon" href="img/favicon.svg">
 </head>
 <body>
+	<div class="modal-window">
+		<div class="modal-window__inner-content">
+			<p class="modal-window__text">
+				Введите дату в формате гггг-мм-дд
+			</p>
+			<input type="text" class="modal-window__date modal-window__enter-item" placeholder="2021-02-02"> <br>
+			<p class="modal-window__text">
+				Введите ваш бюджет на месяц
+			</p>
+			<input type="number" class="modal-window__budget modal-window__enter-item" placeholder="30000"> <br>
+			<button class="modal-window__button">Утвердить</button>
+		</div>
+	</div>
 	<div class="wrapper">
 		<a name="top" class="scroll"></a>
 		<header class="header">
@@ -153,7 +166,6 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.js"></script>
-	<script src="js/add.js"></script>
+	<script src="js/app-min.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+const modalWindow = document.querySelector(".modal-window");
+const modalWindowBtn = document.querySelector(".modal-window__button")
 const startPayment = document.querySelector(".start-payment-button");
 const budgetValue = document.querySelector(".budget-value");
 const dayBudgetValue = document.querySelector(".daybudget-value");
@@ -101,13 +103,35 @@ let appData = {
 };
 
 
+let modalTime = document.querySelector(".modal-window__date");
+let modalMoney = document.querySelector(".modal-window__budget");
 startPayment.addEventListener("click", function() {
-    time = prompt("Введите дату в формате YYYY-MM-DD");
-    money = +prompt("Ваш бюджет на месяц?");
+    modalWindow.style.display = "block";
 
-    while(isNaN(money) || money == "" || money == null) {
-        money = +prompt("Ваш бюджет на месяц?");
-    }
+    time = document.querySelector(".modal-window__date").value;
+    money = +(document.querySelector(".modal-window__budget").value);
+    
+
+    modalWindowBtn.addEventListener("click", function() {
+        modalWindow.style.display = "none";
+        time = document.querySelector(".modal-window__date").value;
+        money = +(document.querySelector(".modal-window__budget").value);
+
+        appData.budget = money;
+        appData.timeData = time;
+        budgetValue.textContent = money.toFixed();
+        year.value = new Date(Date.parse(time)).getFullYear();
+        month.value = new Date(Date.parse(time)).getMonth() + 1;
+        day.value = new Date(Date.parse(time)).getDate();
+
+        determineLevel();
+        
+    });
+    // while(isNaN(money) || money == "" || money == null) {
+    //     money = +prompt("Ваш бюджет на месяц?");
+    // }
+
+
     appData.budget = money;
     appData.timeData = time;
     budgetValue.textContent = money.toFixed();
@@ -199,23 +223,8 @@ startPayment.addEventListener("click", function() {
 
         });
     });
-    
-    if (appData.budget != undefined) {
-        appData.moneyPerDay = ((appData.budget - (+expensesValue.textContent)) / 30 ).toFixed(1);
-        dayBudgetValue.textContent = appData.moneyPerDay;
-    
-        if (appData.moneyPerDay < 100) {
-            levelValue.textContent = "Минимальный уровень достатка";
-        }   else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-            levelValue.textContent = "Средний уровень достатка";
-        }   else if (appData.moneyPerDay > 2000) {
-            levelValue.textContent = "Высокий уровень достатка";
-        }   else {
-            levelValue.textContent = "Error";
-        }
-    }   else {
-        dayBudgetValue.textContent = "Произошла ошибка";
-    }
+
+    determineLevel();
 });
 
 expensesItemBtn.addEventListener("click", function() {
@@ -242,6 +251,10 @@ function countMoney() {
             
     }
     expensesValue.textContent = sum;
+    determineLevel()
+}
+
+function determineLevel() {
     if (appData.budget != undefined) {
         appData.moneyPerDay = ((appData.budget - (+expensesValue.textContent)) / 30 ).toFixed(1);
         dayBudgetValue.textContent = appData.moneyPerDay;
