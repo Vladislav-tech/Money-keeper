@@ -13,14 +13,17 @@
 	<div class="modal-window">
 		<div class="modal-window__inner-content">
 			<p class="modal-window__text">
-				Введите дату в формате гггг-мм-дд
+				Введите дату в формате дд-мм-гггг
 			</p>
-			<input type="text" class="modal-window__date modal-window__enter-item" placeholder="2021-02-02"> <br>
+			<input type="date" class="modal-window__date modal-window__enter-item"><span class="tooltip"><img src="img/Warning sign.svg" alt="Warning sign" width="30" height="30">Введите дату</span><br>
 			<p class="modal-window__text">
 				Введите ваш бюджет на месяц
 			</p>
-			<input type="number" class="modal-window__budget modal-window__enter-item" placeholder="30000"> <br>
-			<button class="modal-window__button">Утвердить</button>
+			<input type="number" class="modal-window__budget modal-window__enter-item" placeholder="30000"><span class="tooltip"><img src="img/Warning sign.svg" alt="Warning sign" width="30" height="30">Введите бюджет</span><br>
+			<div class="modal-window__button-wrapper">
+				<button class="modal-window__button">Утвердить</button>
+			</div>
+			
 		</div>
 	</div>
 	<div class="wrapper">
@@ -35,28 +38,29 @@
 			<h1 class="main-content__title">Расчёт дневного бюджета</h1>
 			<section class="description">
 				<p class="description__text">Это простое приложение, созданное начинающим разработчиком, для расчёта вашего ежедневного бюджета. <br>
-					Нажмите <a href="#start-payment">начать расчёт</a> для начала работы. Введите ваш бюджет, текущую дату и вы увидете ваш бюджет на
-					месяц, бюджет на сутки(без учёта расходов) и уровень дохода. Для указания расходов введите данные в <a href="#expenses">поля ниже</a> <br>
-					Если нужно добавить новое поле, то нажмите на <a href="#plus">плюсик</a>
+					Нажмите <b> кнопку <a href="#start-payment">начать расчёт</a></b> для начала работы. Введите ваш бюджет, текущую дату и вы увидете ваш бюджет на
+					месяц, бюджет на сутки(без учёта расходов) и уровень дохода. Для указания расходов введите данные в <b><a href="#expenses">поля ниже</a></b>  <br>
+					Если нужно добавить новое поле, то нажмите на <b><a href="#plus">плюсик</a></b>
 				</p>
-				<p class="description__text">Аналогично работают <a href="#optional-expenses">необязательные расходы.</a> Вы также можете ввести
-					данные о ваших <a href="#savings">накоплениях</a> и указать <a href="#income">дополнительный доход.</a>
+				<p class="description__text">Аналогично работают <b><a href="#optional-expenses">необязательные расходы.</a></b> Вы также можете ввести
+					данные о ваших <b><a href="#savings">накоплениях</a></b> и указать <b><a href="#income">дополнительный доход.</a></b>
 					Наслаждайтесь программой и спасибо за ваше внимание!
 				</p>
 				<p class="github">
-					<a href="https://github.com/Vladislav-tech/Money-keeper" class="github__link">Github-репозиторий</a>
+					<b><a href="https://github.com/Vladislav-tech/Money-keeper" class="github__link">Github-репозиторий</a></b>
 					<img src="img/github.svg" alt="github" width="20" height="20" class="github__img">
 				</p>
+				<button class="start-payment-button"><a name="start-payment" title="начать расчёт">Начать расчёт</a></button>
 			</section>
 			<section class="expenses">
 				<a name="expenses"></a>
 				<h2 class="expenses__title title-h2">Введите обязательные расходы</h2>
 				<div class="expenses__enter-items">
 					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
-					<input type="number" class="expenses__enter-item enter-item" placeholder="Цена">
+					<input type="number" class="expenses__enter-item enter-item" placeholder="Стоимость">
 					<br>
 					<input type="text" class="expenses__enter-item enter-item" placeholder="Наименование">
-					<input type="number" class="expenses__enter-item enter-item" placeholder="Цена">
+					<input type="number" class="expenses__enter-item enter-item" placeholder="Стоимость">
 				</div>
 				<a name="plus"></a>
 				<div class="action-wrapper">
@@ -105,15 +109,15 @@
 					</tr>
 				</table>
 				<div class="data">
-					<input class="data__year data-item  input" value="год" disabled>
-					<input class="data__month data-item input" value="месяц" disabled>
 					<input class="data__day data-item input" value="день" disabled>
+					<input class="data__month data-item input" value="месяц" disabled>
+					<input class="data__year data-item  input" value="год" disabled>
 				</div>
 			</div>
 
 			<section class="optional-expenses">
 				<a name="optional-expenses"></a>
-				<h2 class="optional-expenses-title  title-h2">Введите необязательные расходы</h2>
+				<h2 class="optional-expenses-title  title-h2">Введите необязательные расходы. В каждую ячейку введите текст</h2>
 				<div class="optional-expenses__enter-items">
 					<input type="text" class="optional-expenses__enter-item enter-item">
 					<input type="text" class="optional-expenses__enter-item enter-item">
@@ -139,7 +143,7 @@
 
 			<section class="savings">
 				<a name="savings"></a>
-				<h2 class="savings__title title-h2">Есть ли накопления?</h2>
+				<h2 class="savings__title title-h2">Есть ли накопления под процентом?</h2>
 				<input type="checkbox" class="check-savings">
 				<table class="savings__data">
 					<tr>
@@ -152,7 +156,6 @@
 					</tr>
 				</table>
 			</section>
-			<button class="start-payment-button"><a name="start-payment"></a>Начать расчёт</button>
 		</main>
 		<footer class="footer">
 			<nav class="footer__nav">

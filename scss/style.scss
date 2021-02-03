@@ -150,8 +150,22 @@ body {
     @extend %buttonEffects;
 }
 
-.modal-window__button {
-    position: relative;
+.tooltip {
+    display: none;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    background: #ff0101; /* Синий цвет фона */
+    color: rgb(255, 238, 0); /* Цвет текста */
+    padding: 0.4em; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+   }
+
+.modal-window__button-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .money-info-wrapper {
@@ -198,6 +212,10 @@ body {
     display: inline-block;
 }
 
+.savings {
+    margin-bottom: 40px;
+}
+
 .start-payment-button {
     font-weight: bold;
     font-size: 24px;
@@ -220,6 +238,8 @@ body {
 .sum,
 .percent {
     height: 3vh;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 
 .footer {
@@ -306,9 +326,11 @@ body {
     height: 10%;
     text-align: center;
     @include adaptive-font(16, 12);
+    &:hover {
+        background-color: azure;
+    }
 }
 
-// #00aeff
 
 @media screen and(max-width: 957px) {
     .expenses {
@@ -324,6 +346,12 @@ body {
     }
     .money-info {
         padding: 20px;
+    }
+}
+
+@media screen and(max-width: 595px) {
+    .expenses {
+        max-width: 100%;
     }
 }
 
@@ -365,12 +393,6 @@ body {
     }
     
     
-}
-
-@media screen and(min-width: 660px) and (max-width: 768px){
-    .expenses {
-        max-width: 90%;
-    }
 }
 
 @media screen and(min-width: 2000px) {

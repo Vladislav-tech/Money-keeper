@@ -30,23 +30,17 @@ optionalExpensesBtn.disabled = true;
 
 for (let key of optionalExpensesItems) {
     key.disabled = true;
-    key.style.backgroundColor = "white";
 }
 
 for (let key of expensesItems) {
     key.disabled = true;
-    key.style.backgroundColor = "white";
 }
 
 chooseIncome.disabled = true;
-chooseIncome.style.backgroundColor = "white";
-
 checkSavings.disabled = true;
 
 sum.disabled = true;
-sum.style.backgroundColor = "white";
 percent.disabled = true;
-percent.style.backgroundColor = "white";
 
 chooseIncome.addEventListener("input", function() {
     let items = chooseIncome.value;
@@ -102,34 +96,64 @@ let appData = {
     savings: false,
 };
 
+var regExPData = /[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])/;
 
 let modalTime = document.querySelector(".modal-window__date");
 let modalMoney = document.querySelector(".modal-window__budget");
+
+let tooltip = document.querySelectorAll(".tooltip");
 startPayment.addEventListener("click", function() {
     modalWindow.style.display = "block";
 
     time = document.querySelector(".modal-window__date").value;
     money = +(document.querySelector(".modal-window__budget").value);
-    
+
 
     modalWindowBtn.addEventListener("click", function() {
-        modalWindow.style.display = "none";
-        time = document.querySelector(".modal-window__date").value;
-        money = +(document.querySelector(".modal-window__budget").value);
 
-        appData.budget = money;
-        appData.timeData = time;
-        budgetValue.textContent = money.toFixed();
-        year.value = new Date(Date.parse(time)).getFullYear();
-        month.value = new Date(Date.parse(time)).getMonth() + 1;
-        day.value = new Date(Date.parse(time)).getDate();
+    time = document.querySelector(".modal-window__date").value;
+    money = +(document.querySelector(".modal-window__budget").value);
 
-        determineLevel();
+
+        if (time.match(regExPData) && typeof(money) === "number" && money !== 0){
+            console.log(true);
+                   
+            modalWindow.style.display = "none";
+            
+            tooltip[0].style.display = "none";
+            tooltip[1].style.display = "none";
+
+            appData.budget = money;
+            appData.timeData = time;
+            budgetValue.textContent = money.toFixed();
+            year.value = new Date(Date.parse(time)).getFullYear();
+            month.value = new Date(Date.parse(time)).getMonth() + 1;
+            day.value = new Date(Date.parse(time)).getDate();
+
+            determineLevel();
+        } 
+        
+        else if((time.match(regExPData) == null) && (typeof(money) !== "number" || money === 0)) {
+            console.log("money & data false");
+
+            tooltip[0].style.display = "inline-block";
+            tooltip[1].style.display = "inline-block";
+
+        }   
+        
+        else if (time.match(regExPData) == null){
+            console.log("data false");
+            tooltip[0].style.display = "inline-block";
+            tooltip[1].style.display = "none";
+        }   
+        
+        else if(typeof(money) !== "number" || money === 0) {
+            console.log("money false");
+            tooltip[0].style.display = "none";
+            tooltip[1].style.display = "inline-block";
+        }   
         
     });
-    // while(isNaN(money) || money == "" || money == null) {
-    //     money = +prompt("Ваш бюджет на месяц?");
-    // }
 
 
     appData.budget = money;
