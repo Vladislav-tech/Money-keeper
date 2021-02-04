@@ -98,6 +98,7 @@ body {
     border-radius: 5px;
     margin: 1vh 1vw 1vh 0;
     height: 5vh;
+    min-height: 20px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     &:hover {
         background-color: $inputHover;
@@ -146,6 +147,7 @@ body {
 .optional-expenses__button,
 .modal-window__button {
     height: 7.5vh;
+    min-height: 30px;
     width: 206px;
     @extend %buttonEffects;
 }
@@ -159,7 +161,31 @@ body {
     color: rgb(255, 238, 0); /* Цвет текста */
     padding: 0.4em; /* Поля вокруг текста */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+}
+
+
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */ 
    }
+
+   [data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    width: 300px; /* Ширина подсказки */
+    left: 0; top: 0; /* Положение подсказки */
+    background: #3989c9; /* Синий цвет фона */
+    color: #fff; /* Цвет текста */
+    padding: 0.5em; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 1s; /* Время появления подсказки */
+   } 
+   [data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    top: 2em; /* Положение подсказки */
+   }
+  
 
 .modal-window__button-wrapper {
     height: 100%;
@@ -221,6 +247,7 @@ body {
     font-size: 24px;
     line-height: 29px;
     height: 8vh;
+    min-height: 40px;
     width: 300px;
     margin: 3vh 0;
     @extend %buttonEffects;
@@ -238,6 +265,7 @@ body {
 .sum,
 .percent {
     height: 3vh;
+    min-height: 12px;
     border: 1px solid gray;
     border-radius: 5px;
 }
@@ -298,7 +326,6 @@ body {
 }
 
 .modal-window {
-    display: none;
     color: white;
     @include adaptive-font(18, 12);
     position: fixed;
@@ -332,6 +359,18 @@ body {
 }
 
 
+@media screen and(max-height: 583px) {
+    .modal-window__button-wrapper {
+        height: 80%;
+    }
+}
+
+@media screen and(max-height: 428px) {
+    .modal-window__button-wrapper {
+        height: 60%;
+    }
+}
+
 @media screen and(max-width: 957px) {
     .expenses {
         max-width: 60vw;
@@ -340,11 +379,13 @@ body {
     .money-info-wrapper {
         display: inline-block;
         position: relative;
+        width: 100%;
         top: 5vh;
         left: 0;
         float: none;
     }
     .money-info {
+        width: 100%;
         padding: 20px;
     }
 }

@@ -27,6 +27,7 @@ let money, time;
 
 expensesItemBtn.disabled = true;
 optionalExpensesBtn.disabled = true;
+modalWindow.style.display = "none";
 
 for (let key of optionalExpensesItems) {
     key.disabled = true;
@@ -96,7 +97,7 @@ let appData = {
     savings: false,
 };
 
-var regExPData = /[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])/;
+var regExPData = /[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])/; // проверка ввода даты
 
 let modalTime = document.querySelector(".modal-window__date");
 let modalMoney = document.querySelector(".modal-window__budget");
@@ -125,7 +126,7 @@ startPayment.addEventListener("click", function() {
 
             appData.budget = money;
             appData.timeData = time;
-            budgetValue.textContent = money.toFixed();
+            budgetValue.textContent = numberWithSpaces(money.toFixed());
             year.value = new Date(Date.parse(time)).getFullYear();
             month.value = new Date(Date.parse(time)).getMonth() + 1;
             day.value = new Date(Date.parse(time)).getDate();
@@ -158,7 +159,7 @@ startPayment.addEventListener("click", function() {
 
     appData.budget = money;
     appData.timeData = time;
-    budgetValue.textContent = money.toFixed();
+    budgetValue.textContent = numberWithSpaces(money.toFixed());
     year.value = new Date(Date.parse(time)).getFullYear();
     month.value = new Date(Date.parse(time)).getMonth() + 1;
     day.value = new Date(Date.parse(time)).getDate();
@@ -200,6 +201,9 @@ startPayment.addEventListener("click", function() {
         expensesEnterItems.appendChild(inputPrice);
 
         deleteExpensesItem.addEventListener("click", function() {
+            // let lastInputPrice = document.querySelector(".expenses__enter-items").children[document.querySelector(".expenses__enter-items").children.length - 1];
+            // let lastInputName = document.querySelector(".expenses__enter-items").children[document.querySelector(".expenses__enter-items").children.length - 1];
+
             expensesEnterItems.removeChild(inputName);
             expensesEnterItems.removeChild(inputPrice);
             deleteExpensesItem.style.display = "none";
@@ -261,7 +265,10 @@ function countMoney() {
     console.log(expensesItems.length);
     console.log(expensesItems);
     for (let i = 0; i < expensesItems.length; i++) {
-        let a = expensesItems[i].value,
+
+        if (expensesItems[i].value) {
+            expensesItemBtn.removeAttribute("data-tooltip");
+            let a = expensesItems[i].value,
             b = expensesItems[++i].value;
     
             if (typeof(a) === "string" && typeof(a) !== null && 
@@ -272,23 +279,32 @@ function countMoney() {
             }   else {
                 i--;
             }
+        }   else {
+            console.log("error");
+            expensesItemBtn.setAttribute("data-tooltip", "Введите данные");
+
+        }
+
             
     }
     expensesValue.textContent = sum;
-    determineLevel()
+    determineLevel();
 }
 
 function determineLevel() {
     if (appData.budget != undefined) {
         appData.moneyPerDay = ((appData.budget - (+expensesValue.textContent)) / 30 ).toFixed(1);
-        dayBudgetValue.textContent = appData.moneyPerDay;
+        dayBudgetValue.textContent = numberWithSpaces(appData.moneyPerDay);
     
         if (appData.moneyPerDay < 100) {
-            levelValue.textContent = "Минимальный уровень достатка";
+            levelValue.textContent = "Минимальный уровень достатка $";
+            levelValue.style.color = "red";
         }   else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-            levelValue.textContent = "Средний уровень достатка";
+            levelValue.textContent = "Средний уровень достатка $$";
+            levelValue.style.color = "rgb(242,202,3)";
         }   else if (appData.moneyPerDay > 2000) {
-            levelValue.textContent = "Высокий уровень достатка";
+            levelValue.textContent = "Высокий уровень достатка $$$";
+            levelValue.style.color = "green";
         }   else {
             levelValue.textContent = "Error";
         }
@@ -311,3 +327,10 @@ optionalExpensesBtn.addEventListener("click", function() {
     optionalExpensesValue.textContent = optionalTextContent;
     console.log("click");
 });
+
+//раздение числа по разрядам
+function numberWithSpaces(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return parts.join(".");
+  }
